@@ -1,0 +1,25 @@
+Organizing Git Repositories for GitOps Environments :
+=====================================================
+   1) Understanding Single Branch Strategy :
+   -----------------------------------------
+       In the single branch strategy, one Git repository is used, with a specific directory for each of the environments
+       Kubernetes Kustomize is used to adopt the configuration for a specific environment
+       Environment-specific settings will be in each of the subdirectories, as different resources are required in production and pre-production.
+       The advantage of this strategy is that all code is still in one branch, but Kustomization is required to create the specific environments
+       In a GitOps environment, stages are defined for different environments.
+       These stages and environments should be presented in the Git repositories.
+       Common solutions are the single branch strategy and the multi-branch strategy
+
+   2) Understanding Multi-branch Strategy :
+   ----------------------------------------
+       In a multi-branch strategy, each branch has the specific configuration that is required in an environment.
+       As a disadvantage, there is no common code that is shared through all the environments, which is likely to make multi-branch less efficient
+
+   3) Managing Configuration :
+   ---------------------------
+       Creating configurations for the different environments is taken care of by Kubernetes
+       The core Kubernetes resources to do so are Configmap and Secret
+       Kubernetes provides different solutions to manage configurations which will be explored in more depth in Lesson 10:
+           > Helm
+           > Kustomize
+
