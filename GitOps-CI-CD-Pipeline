@@ -106,3 +106,44 @@
     In Simply :
     ===========
        GitOps CD focuses on synchronizing the desired state defined in Git with the actual state in the Kubernetes cluster, using either specialized GitOps operators or traditional CI/CD tools.
+
+
+# Diagram Representation :
+==========================
++-----------------+       +-------------------+        +-------------------+
+|                 |       |                   |        |                   |
+| Code Repository | <---> | DevOps Pipeline   | <--->  | Container Registry|
+| (Git)           |       | (Build, Test,     |        |                   |
+|                 |       | Package)          |        |                   |
++-----------------+       +-------------------+        +-------------------+
+                              |              
+                              |
+                              v
+                        +-----------------+
+                        |                 |
+                        | GitOps Pipeline |
+                        | (Update, Commit)|
+                        |                 |
+                        +-----------------+
+                              |
+                              |
+                              v
+                       +---------------------+
+                       |                     |
+                       | Kubernetes Cluster  |
+                       | (Deployment)        |
+                       |                     |
+                       +---------------------+
+                              |
+                              |
+                              v
+                     +----------------------+
+                     |                      |
+                     | Monitoring & Feedback|
+                     |                      |
+                     +----------------------+
+    # Summary :
+    ===========
+      DevOps Pipeline handles code building, testing, and packaging.
+      GitOps Pipeline manages configuration updates and deployments.
+      Both pipelines integrate through version control, with GitOps automating deployment based on the configurations updated by DevOps.
