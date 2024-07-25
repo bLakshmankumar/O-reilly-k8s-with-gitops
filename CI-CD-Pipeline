@@ -1,0 +1,57 @@
+# What is a Pipeline ?
+======================
+     a) A pipeline is a set of connected data processing elements
+     b) The output of one element is used as input of the next element
+     c) Elements of a pipeline can be executed in order or in parallel, depending on the underlying architecture
+     d) A software pipeline defines how the output of one command can be used as input of the next command
+     e) A CI/CD pipeline moves the software build process through its different stages.
+   # Types of Pipelines:
+   =====================
+     a) Instruction Pipeline:
+     ------------------------
+        Defines how CPUs handle their instructions and move them forward to the next CPU component.
+     b) Software Pipeline:
+     ---------------------
+        Defines how the output of one command can be used as input for the next command.
+     c) CI/CD Pipeline:
+     ------------------
+        Moves the software build process through its different stages, automating steps from code integration to deployment.
+
+# Creating Pipelines for DevOps :
+=================================
+     In DevOps, CI/CD is organized in pipelines to streamline and automate the software development and deployment processes.
+     The pipeline automates all steps in CI/CD according to the needs of a specific environment.
+     At the end of the pipeline, updated software is provided, ready for deployment.
+     In a Kubernetes-based environment, the updated software is delivered using images.To make it easy to identify new versions, image tags should always be used.
+   Simply : 
+   =======
+     CI/CD pipelines in DevOps facilitate the automated delivery of software updates, ensuring that the deployment process is efficient and consistent.
+     Using image tags in Kubernetes-based environments helps in managing and identifying different software versions easily.
+
+# Common DevOps CI/CD Stages :
+==============================
+  stage-1 : Pipeline Trigger:
+  --------------------------
+     The pipeline is triggered automatically when new code is committed.
+     Webhooks are commonly used for this purpose.
+  stage-2 : Code Checkout:
+  -------------------------
+     The code is fetched from the source repository.
+  stage-3 : Code Compile:
+  -----------------------
+     The code is compiled to create a running application.
+  stage-4 : Run Unit Tests:
+  -------------------------
+     Unit tests are executed to verify that individual parts of the application work as expected.
+  stage-5 : Code Packaging:
+  -------------------------
+     The compiled code is packaged, typically by building a container image.
+  stage-6 : Automated Testing:
+  ----------------------------
+     Automated tests are run to ensure the application works as expected.
+  stage-7 : Delivery:
+  -------------------
+     The pipeline produces artifacts that are ready to be deployed in production.
+  stage-8 : Deployment:
+  ---------------------
+     The artifacts are deployed, resulting in a running, updated application without any human intervention.
