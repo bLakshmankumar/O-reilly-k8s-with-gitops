@@ -55,3 +55,54 @@
   stage-8 : Deployment:
   ---------------------
      The artifacts are deployed, resulting in a running, updated application without any human intervention.
+
+# DevOps and GitOps Overlap(Diff) :
+==================================
+  Goals:
+  ------
+    > The goal of DevOps is to deliver software.
+    > The goal of GitOps is to deliver running applications.
+  Pipeline Organization:
+  ----------------------
+    > These goals can be organized in a single pipeline.
+    > However, it's more common to organize the DevOps procedure separately in its own pipeline and the GitOps procedure in another.
+
+   # Simply :
+   ==========
+     Both DevOps and GitOps aim to streamline the delivery process, DevOps focuses on delivering software, and GitOps ensures the software is running correctly in the desired state. 
+     They can be integrated into one pipeline but are often managed separately for clarity and organization.
+
+# Creating Pipelines for GitOps CI :
+====================================
+    Common phases in GitOps CI include: 
+    -----------------------------------
+         Build                              : May occur in the DevOps pipeline.
+         Test                               : May occur in the DevOps pipeline.
+         Update Application Container Image : May occur in the DevOps pipeline.
+         Clone Git Configuration Repository : The Git repository containing the Kubernetes manifest files is cloned.
+         Change Kubernetes Manifest Files   : Update the Kubernetes manifest files to reflect the new application state or configuration.
+         Commit Changed Manifest Files Back to the Git Repository : The updated manifest files are committed back to the Git repository.
+         Customization                      : Steps may be added or skipped according to the needs of a specific environment.
+    Simply :
+    ========
+      A GitOps CI pipeline includes phases for managing Kubernetes configurations, often leveraging the DevOps pipeline for building, testing, and updating container images. 
+      The flexibility to add or skip steps allows for customization based on specific requirements.
+
+# Implementing GitOps CD :
+==========================
+    Mission :
+    ---------
+      The mission of GitOps CD is to apply changed manifests to the Kubernetes infrastructure.
+    Approaches :
+    ------------
+      a) GitOps Operator:
+      -------------------
+           A GitOps operator can be used to discover changes in the Git repository and automatically apply the updated manifests to the Kubernetes cluster.
+     
+      b) Generic CI/CD Pipeline Utilities:
+      ------------------------------------
+           Alternatively, generic CI/CD pipeline tools can be used to detect changes in the Git repository and apply the updated manifests to the Kubernetes cluster.
+
+    In Simply :
+    ===========
+       GitOps CD focuses on synchronizing the desired state defined in Git with the actual state in the Kubernetes cluster, using either specialized GitOps operators or traditional CI/CD tools.
