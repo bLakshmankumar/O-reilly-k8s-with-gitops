@@ -147,3 +147,64 @@
       DevOps Pipeline handles code building, testing, and packaging.
       GitOps Pipeline manages configuration updates and deployments.
       Both pipelines integrate through version control, with GitOps automating deployment based on the configurations updated by DevOps.
+
+
+# Getting Started with Jenkins :
+=================================
+ # Why Jenkins ? :
+ =================
+    Jenkins is software that makes it easier to build pipelines
+    It provides an automated solution that allows you to shape all stages using different steps, using the Git repository as input
+    Using Jenkins is optional, there are other ways to perform GitOps CI/CD if Jenkins is not used
+  
+ # Alternative solutions for jenkins : 
+ =====================================
+    AWS CodePipeline
+    Gitlab Cl
+    TeamCity And more
+
+ # Using Jenkins :
+ =================
+    A Jenkins job represents a pipeline
+    Jenkins uses Jenkinsfiles to define jobs
+    For easy access in a GitOps environment, Jenkinsfiles are stored in Git repositories
+ 
+ # Jenkins Agents :
+ ==================
+    Different agents are available for Jenkins
+    You don't have to call a specific agent to run generic commands in a Jenkins pipeline
+    Make sure that commands needed in the Jenkinsfile are installed on the Jenkins host
+
+ # Running Jenkins as a Systemd Service :
+ ========================================
+    Install Docker, as the sample Jenkinsfile will run Docker commands: https://docs.docker.com/engine/install/ubuntu/
+    Install Java: sudo apt install default-jre
+    Install Jenkins according to the instructions found here: https://www.jenkins.io/doc/book/installing/linux/
+    Ensure that optional additional programs that run from the Jenkinsfile are installed as well
+
+ # Creating a Jenkins Pipeline :
+ ===============================
+    At this point, you're ready to create a Jenkins CI/CD pipeline.
+    A pipeline is a script that is written in the Groovy syntax.
+    In this script, different stages are defined, and each stage consists of a couple of steps.
+    Jenkins pipelines can use specific agents to perform tasks
+    When no generic agents are used, shell commands can be executed
+    Each command that is executed as a shell command must be installed on the machine or container that runs Jenkins
+
+ # Examining a Pipeline Script :
+ ===============================
+    A simple pipeline script, containing different stages, is available at https://github.com/sandervanvugt/gitops/as the file jenkinspipe
+    Notice the Git repository that is used in this file
+    Use git branch: 'branchename' to indicate which branch you want to use
+    Add url: to refer to the specific Git repository
+    The git repository will be cloned to the local Jenkins environment, and it will be updated each time the Jenkins pipeline runs
+    Demo: Running the Pipeline script
+    Connect to Jenkins Dashboard at localhost:8080
+    Click New Item
+    Enter a name: jenkinspipeline
+    Select Pipeline and click OK
+    Select Pipeline and set Definition to Pipeline Script
+    In the script code section, manually copy contents of https://github.com/sandervanvugt/gitops/jenkinspipeline
+    Click Save
+    In the menu on the left, select Build Now and observe what is happening
+    For more details, click the build time and date, and from there select Console Output to see messages generated on the console
