@@ -209,7 +209,6 @@
     In the menu on the left, select Build Now and observe what is happening
     For more details, click the build time and date, and from there select Console Output to see messages generated on the console
 
-
 # Understanding Container runtime in kubernetes :
 =================================================
    > The container runtime is a platform-independent component used to run containers
@@ -235,4 +234,65 @@
      > Podman supports running containers as a non-root user, enhancing security by minimizing privileges.
      > It can generate Kubernetes YAML files from existing containers, making it easier to transition between local development and Kubernetes deployments.
 
+# What is kubernetes ?
+======================
+   > Kubernetes is an open-source platform for automating the deployment, scaling, and management of containerized applications. 
+   > It helps you manage clusters of containers, ensuring they run efficiently, can handle increased load, and recover from failures. 
+   > Essentially, Kubernetes makes it easier to run applications reliably across different environments.
+   > It can be managed in different ways :
+   ------------------------------------
+       We can manage/setup/install k8s in cloud (like - aws, azure, gcp & etc)
+       We can manage/setup/install k8s in an on-premise by using kubeadm, kops and etc.
+       We can manage/setup/install k8s in minimized learning environements like minikube as well.
+
+# Setup k8s cluster on eks(aws) :
+==================================
+   > Elastic Kubernetes Services (EKS) is managed Kubernetes by Amazon
+   > Configuration can be done using the web user interface, or eksctl, which needs to be installed and configured separately
+   > The minimal setup consists of the cluster and the node group, after which the applications can be started 
+   > It is recommended to set up the cluster automatically, using eksctl.
+ # Demo: Using eksctl to Configure EKS :
+ =======================================
+   Step 1: Set Up AWS IAM User :
+   -----------------------------
+       Create an IAM User with Programmatic Access:
+          Go to the AWS IAM Management Console.
+          Create a new user with Programmatic access to get an Access Key ID and Secret Access Key.
+          download Access key as well as secret acces-key
+          Attach Required Policies:
+              Attach the AmazonEKSClusterPolicy and AmazonEKSWorkerNodePolicy policies to your IAM user.
+   Step 2: Install AWS CLI :
+   -------------------------
+       sudo apt update
+       sudo apt install awscli -y
+     Configure AWS CLI: 
+       aws configure     # Enter your Access Key ID, Secret Access Key, default region name, and default output format when prompted.
+   Step 3: Install kubectl : [# Download and Install kubectl]
+   --------------------------
+       curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+       sudo mv /tmp/eksctl /usr/local/bin
+   Step 4: Install eksctl : [ # Download and Install eksctl]
+   -------------------------
+       curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+       sudo mv /tmp/eksctl /usr/local/bin
+     Verify Installation:
+       eksctl version
+   Step 5: Create an EKS Cluster :
+   -------------------------------
+        eksctl create cluster --name my-cluster --region us-west-2 --nodegroup-name my-nodes --node-type t3.medium --nodes 3
+      Verify the Cluster:
+        kubectl get nodes
+
+# Setup a k8s cluster on minikube :
+====================================
+    To install Minikube on Linux using the container driver, you can follow these steps. This guide will be based on using the minikube-docker-setup.sh script provided in the course Git repository.
+  Prerequisites :
+    Docker: Ensure Docker is installed on your system.
+    System Requirements: At least 2 GB of available RAM and 2 vCPUs.
+ Installation Steps :
+ --------------------
+    > git clone https://github.com/sandervanvugt/kubernetes.git # clone the repo and switch to kubernetes directory
+    > cd kubernetes
+    > chmod +x minikube-docker-setup.sh # provide the execution permissions
+    > ./minikube-docker-setup.sh        # Run the script
 
