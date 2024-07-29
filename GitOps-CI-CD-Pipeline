@@ -208,3 +208,31 @@
     Click Save
     In the menu on the left, select Build Now and observe what is happening
     For more details, click the build time and date, and from there select Console Output to see messages generated on the console
+
+
+# Understanding Container runtime in kubernetes :
+=================================================
+   > The container runtime is a platform-independent component used to run containers
+   > Runtimes are standardized in the Container Runtime Interface (CRI).
+   >  Commonly used container runtimes are "containerd" and "cri-o" Runtimes allow containers to be started on any operating system or cloud platform.
+
+  1) Containerd :
+  ===============
+     > Containerd is an industry-standard core container runtime.
+     > It was originally developed by Docker but now is an independent project under the Cloud Native Computing Foundation (CNCF).
+     > Containerd handles container lifecycle management, including creation, execution, and deletion of containers.
+
+  2) CRI-O :
+  ==========
+     > CRI-O is a lightweight container runtime for Kubernetes, designed to implement the Kubernetes Container Runtime Interface (CRI). 
+     > It provides a stable and performant runtime for Kubernetes without unnecessary additional features.
+     > It uses existing OCI (Open Container Initiative) standards and tools, such as runc for running containers, and avoids adding extra features beyond what Kubernetes requires.
+
+  3) Podman :
+  ===========
+     > Podman is a daemonless container engine for developing, managing, and running OCI containers on Linux systems. 
+     > It is developed by Red Hat and focuses on ease of use and flexibility.
+     > Podman supports running containers as a non-root user, enhancing security by minimizing privileges.
+     > It can generate Kubernetes YAML files from existing containers, making it easier to transition between local development and Kubernetes deployments.
+
+
