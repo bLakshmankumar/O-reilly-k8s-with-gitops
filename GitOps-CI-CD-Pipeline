@@ -239,6 +239,45 @@
    > Kubernetes is an open-source platform for automating the deployment, scaling, and management of containerized applications. 
    > It helps you manage clusters of containers, ensuring they run efficiently, can handle increased load, and recover from failures. 
    > Essentially, Kubernetes makes it easier to run applications reliably across different environments.
+
+# The components of a Kubernetes cluster
+=========================================
+  Core Components :
+  -----------------
+     A Kubernetes cluster consists of a control plane and one or more worker nodes.
+  Here's a brief overview of the main components: 
+  -----------------------------------------------
+    Master (or) Control Plane Components :
+    ======================================
+      Manage the overall state of the cluster:
+        > kube-apiserver 
+        ----------------
+            The core component server that exposes the Kubernetes HTTP API
+        > etcd
+        ------
+            Consistent and highly-available key value store for all API server data
+        > kube-scheduler
+        ----------------
+            Looks for Pods not yet bound to a node, and assigns each Pod to a suitable node.
+        > kube-controller-manager
+        -------------------------
+            Runs controllers to implement Kubernetes API behavior.
+        > cloud-controller-manager (optional)
+        -------------------------------------
+            Integrates with underlying cloud provider(s).
+    Node Components :
+    =================
+      Run on every node, maintaining running pods and providing the Kubernetes runtime environment:
+        > kubelet 
+        ---------
+            Ensures that Pods are running, including their containers.
+        > kube-proxy (optional)
+        -----------------------
+            Maintains network rules on nodes to implement Services.
+        > Container runtime
+        -------------------
+            Software responsible for running containers. 
+   
    > It can be managed in different ways :
    ------------------------------------
        We can manage/setup/install k8s in cloud (like - aws, azure, gcp & etc)
